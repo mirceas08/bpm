@@ -1,0 +1,31 @@
+#########################################
+## Make file for boundary point method ##
+#########################################
+
+
+##### Insert here location of headers and libraries
+
+# headers
+ARMADILLO_INC	= /home/mircea/Desktop/Mircea/Programming/C++/libraries/armadillo-5.200.2/include
+EIGEN_INC		= /home/mircea/Desktop/Mircea/Programming/C++/libraries/Eigen/
+
+# libraries
+OPENBLAS_LIB 	= usr/lib
+LAPACK_LIB		= /usr/lib/lapack
+
+#################################################################
+
+CC				= mpic++
+DEBUG			= -DARMA_NO_DEBUG -DNDEBUG
+PROG            = bpm
+OBJS            = bpm.o
+FILES			= bpm.cpp
+INCLUDES        = -I $(ARMADILLO_INC) -I $(EIGEN_INC)
+LIBS            = -L $(OPENBLAS_LIB) -lopenblas -L $(LAPACK_LIB) -llapack
+CFLAGS        	= -O3 -std=c++11 -fopenmp -march=native $(DEBUG)
+
+build: $(FILES)
+	$(CC) -o $(PROG) $(FILES) $(INCLUDES) $(LIBS) $(CFLAGS)
+
+clean:
+	rm -f *.o core

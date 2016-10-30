@@ -1,0 +1,8 @@
+#!/bin/bash
+export OPENBLAS_LIB=/usr/lib
+export LAPACK_LIB=/usr/lib/include/lapack
+export ARMADILLO_HEADER=/home/mircea/Desktop/Mircea/Programming/C++/libraries/armadillo-5.200.2/include
+export EIGEN_HEADER=/home/mircea/Desktop/Mircea/Programming/C++/libraries/Eigen/
+LALIB="-I${ARMADILLO_HEADER} -I${EIGEN_HEADER} -L${OPENBLAS_LIB} -lopenblas -L${LAPACK_LIB} -llapack"
+mpic++ bpm.cpp ${LALIB} -march=native -O3 -fopenmp -DARMA_NO_DEBUG -DNDEBUG -std=c++11 -fno-omit-frame-pointer
+

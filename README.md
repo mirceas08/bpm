@@ -23,7 +23,9 @@ To compile the code type
 
 Run the code with
 
->./executable datafile
+>./executable parameterFile
+
+The code reads input data from 'data' folder and writes solution matrix into 'solution' folder.
 
 Acknowledgments
 ===========

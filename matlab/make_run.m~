@@ -1,0 +1,27 @@
+% n ... primal dim
+% k ... nullity of Z (multiplicity of lambda_max(-Z))
+%   equivalently, since strict complementarity holds, rank of X
+% m ... number of primal constraints
+% A m by n*n; each row is vec( sym matrix)
+
+n = 50;
+k = 10;
+m = 100;
+
+
+[A, b, C, X, y, Z] = make_sdp(n, k, m);
+
+dim = size(C,1);
+A_GT = A';
+AAT = A*A';
+
+save('/home/mircea/Desktop/Mircea/SoHPC/bpm/A_GT.dat', 'A_GT', '-ascii');
+save('/home/mircea/Desktop/Mircea/SoHPC/bpm/AAT.dat', 'AAT', '-ascii');
+save('/home/mircea/Desktop/Mircea/SoHPC/bpm/b.dat', 'b', '-ascii');
+save('/home/mircea/Desktop/Mircea/SoHPC/bpm/C.dat', 'C', '-ascii');
+save('/home/mircea/Desktop/Mircea/SoHPC/bpm/dim.dat', 'dim', '-ascii');
+
+data.dim=size(C,1);data.C={C};
+data.A_GT={A'};data.b=b;data.AAT=A*A';
+disp('starting...');
+[X,y,Z,sigma] = bpm_block(data);

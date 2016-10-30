@@ -19,7 +19,7 @@ Executables
 
 To compile the code type
 
->make
+>make all
 
 Run the code with
 

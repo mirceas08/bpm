@@ -17,7 +17,7 @@ Executables
 * bpm_mpi: parallel version - MPI is used as message passing
 * bpm_sequential: serial version
 
-To compile the code type
+Compile the code with
 
 >make all
 
